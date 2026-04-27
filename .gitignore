@@ -1,0 +1,11 @@
+.venv.nosync/
+venv/
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+data/processed/
+models/*.keras
+models/*.weights.h5
+models/*.joblib
+.DS_Store

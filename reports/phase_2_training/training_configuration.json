@@ -1,0 +1,20 @@
+{
+    "epochs": 150,
+    "batch_size": 128,
+    "learning_rate": 0.0005,
+    "clipnorm": 1.0,
+    "dropout_rate": 0.2,
+    "rul_output_loss_weight": 4.0,
+    "fail_output_loss_weight": 0.75,
+    "eol_weight_alpha": 3.2,
+    "eol_weight_beta": 3.5,
+    "overestimation_alpha": 1.6,
+    "overestimation_beta": 2.5,
+    "underestimation_weight": 1.0,
+    "failure_positive_rate": 0.14372918009757996,
+    "failure_positive_weight": 5.95752942666955,
+    "validation_safety_margin": 10.0,
+    "default_fail_probability_threshold": 0.5,
+    "gpu_disabled": true,
+    "random_state": 42
+}

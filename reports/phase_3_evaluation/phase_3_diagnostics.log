@@ -1,0 +1,223 @@
+2026-04-27 15:00:43,870 | INFO | 
+2026-04-27 15:00:43,870 | INFO | ====================================================================================================
+2026-04-27 15:00:43,870 | INFO | PHASE 3 - OFFICIAL FD004 EVALUATION AND DIAGNOSTICS
+2026-04-27 15:00:43,870 | INFO | ====================================================================================================
+2026-04-27 15:00:43,870 | INFO | Metadata loaded from: data/processed/phase_1_metadata.json
+2026-04-27 15:00:43,870 | INFO | Validation-selected threshold loaded from: reports/phase_2_training/selected_failure_threshold.json
+2026-04-27 15:00:43,870 | INFO | Selected validation threshold: 0.01
+2026-04-27 15:00:43,870 | INFO | Loaded Phase 1 metadata
+2026-04-27 15:00:43,870 | INFO |   - window_size: 30
+2026-04-27 15:00:43,870 | INFO |   - feature_count: 45
+2026-04-27 15:00:43,870 | INFO |   - test_sequences: 248
+2026-04-27 15:00:43,870 | INFO |   - train_fail_rate: 0.14372918009757996
+2026-04-27 15:00:43,870 | INFO |   - val_fail_rate: 0.13955163955688477
+2026-04-27 15:00:43,870 | INFO |   - test_target_fail_rate: 0.21370967741935484
+2026-04-27 15:00:43,870 | INFO | Selected model artifact: models/fd004_specialist.keras
+2026-04-27 15:00:43,960 | INFO | Official test targets loaded from processed file: data/processed/official_test_targets_fd004.csv
+2026-04-27 15:00:43,960 | INFO | 
+2026-04-27 15:00:43,960 | INFO | ====================================================================================================
+2026-04-27 15:00:43,960 | INFO | Input diagnostics
+2026-04-27 15:00:43,961 | INFO | ====================================================================================================
+2026-04-27 15:00:43,961 | INFO | Official test tensor summary
+2026-04-27 15:00:43,961 | INFO |   - X_test shape: (248, 30, 45)
+2026-04-27 15:00:43,961 | INFO |   - number of engines: 248
+2026-04-27 15:00:43,961 | INFO |   - RUL ground-truth rows: 248
+2026-04-27 15:00:43,961 | INFO |   - raw true RUL min: 6.0
+2026-04-27 15:00:43,961 | INFO |   - raw true RUL max: 195.0
+2026-04-27 15:00:43,961 | INFO |   - validation_selected_threshold: 0.01
+2026-04-27 15:00:43,961 | INFO | Running deterministic inference on official test tensor.
+2026-04-27 15:00:44,158 | INFO | Full engine-level prediction table saved to: reports/phase_3_evaluation/Full_Engine_Predictions.csv
+2026-04-27 15:00:44,159 | INFO | 
+2026-04-27 15:00:44,159 | INFO | ====================================================================================================
+2026-04-27 15:00:44,159 | INFO | Regression metrics
+2026-04-27 15:00:44,159 | INFO | ====================================================================================================
+2026-04-27 15:00:44,161 | INFO | Raw RUL regression metrics
+2026-04-27 15:00:44,161 | INFO |   - Global_MAE: 16.95953941345215
+2026-04-27 15:00:44,161 | INFO |   - Global_RMSE: 22.736928013867935
+2026-04-27 15:00:44,161 | INFO |   - Global_R2: 0.7201614379882812
+2026-04-27 15:00:44,161 | INFO |   - Global_Bias: -1.4514275789260864
+2026-04-27 15:00:44,161 | INFO |   - Global_Median_Absolute_Error: 11.364978790283203
+2026-04-27 15:00:44,161 | INFO |   - Global_Dangerous_Overestimation_Pct: 45.16129032258064
+2026-04-27 15:00:44,161 | INFO |   - Global_Underestimation_Pct: 54.43548387096774
+2026-04-27 15:00:44,161 | INFO |   - Global_Within_5_Cycles_Pct: 19.35483870967742
+2026-04-27 15:00:44,161 | INFO |   - Global_Within_10_Cycles_Pct: 39.11290322580645
+2026-04-27 15:00:44,161 | INFO |   - Global_Within_15_Cycles_Pct: 60.08064516129033
+2026-04-27 15:00:44,161 | INFO | Safety-adjusted RUL regression metrics
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_MAE: 22.659257888793945
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_RMSE: 27.93257415152547
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_R2: 0.5776564478874207
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Bias: -16.248653411865234
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Median_Absolute_Error: 21.359657287597656
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Dangerous_Overestimation_Pct: 19.758064516129032
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Underestimation_Pct: 80.24193548387096
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Within_5_Cycles_Pct: 9.67741935483871
+2026-04-27 15:00:44,161 | INFO |   - Safety_Adjusted_Within_10_Cycles_Pct: 24.596774193548388
+2026-04-27 15:00:44,162 | INFO |   - Safety_Adjusted_Within_15_Cycles_Pct: 38.306451612903224
+2026-04-27 15:00:44,162 | INFO | Range-specific RUL metrics
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_MAE: 17.753725051879883
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_RMSE: 23.081987288945275
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_R2: -1.438225269317627
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Bias: -11.490809440612793
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Median_Absolute_Error: 12.100456237792969
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Dangerous_Overestimation_Pct: 22.22222222222222
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Underestimation_Pct: 77.03703703703704
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Within_5_Cycles_Pct: 9.62962962962963
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Within_10_Cycles_Pct: 31.11111111111111
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Within_15_Cycles_Pct: 59.25925925925925
+2026-04-27 15:00:44,162 | INFO |   - High_RUL_Samples: 135
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_MAE: 23.121984481811523
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_RMSE: 28.954773462246255
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_R2: -2.443934440612793
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Bias: 14.119491577148438
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Median_Absolute_Error: 19.902629852294922
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Dangerous_Overestimation_Pct: 63.33333333333333
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Underestimation_Pct: 36.666666666666664
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Within_5_Cycles_Pct: 20.0
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Within_10_Cycles_Pct: 31.666666666666664
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Within_15_Cycles_Pct: 40.0
+2026-04-27 15:00:44,162 | INFO |   - Mid_RUL_Samples: 60
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_MAE: 7.960271835327148
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_RMSE: 10.622385937623077
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_R2: -2.003389835357666
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Bias: 6.493125915527344
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Median_Absolute_Error: 6.8466644287109375
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Dangerous_Overestimation_Pct: 83.01886792452831
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Underestimation_Pct: 16.9811320754717
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Within_5_Cycles_Pct: 43.39622641509434
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Within_10_Cycles_Pct: 67.9245283018868
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Within_15_Cycles_Pct: 84.90566037735849
+2026-04-27 15:00:44,162 | INFO |   - End_of_Life_Samples: 53
+2026-04-27 15:00:44,162 | INFO | NASA PHM asymmetric score - raw prediction: 4317.084961
+2026-04-27 15:00:44,162 | INFO | NASA PHM asymmetric score - safety-adjusted prediction: 5690.887207
+2026-04-27 15:00:44,162 | INFO | 
+2026-04-27 15:00:44,162 | INFO | ====================================================================================================
+2026-04-27 15:00:44,162 | INFO | Alarm metrics
+2026-04-27 15:00:44,162 | INFO | ====================================================================================================
+2026-04-27 15:00:44,170 | INFO | Validation-threshold neural alarm metrics
+2026-04-27 15:00:44,170 | INFO |   - Validation_Threshold_Neural_Accuracy: 0.8951612903225806
+2026-04-27 15:00:44,170 | INFO |   - Validation_Threshold_Neural_Precision: 0.6901408450704225
+2026-04-27 15:00:44,170 | INFO |   - Validation_Threshold_Neural_Recall: 0.9245283018867925
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_F1: 0.7903225806451613
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_TN: 173
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_FP: 22
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_FN: 4
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_TP: 49
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_ROC_AUC: 0.976487663280116
+2026-04-27 15:00:44,171 | INFO |   - Validation_Threshold_Neural_Average_Precision: 0.9196781657462444
+2026-04-27 15:00:44,171 | INFO | Safety-adjusted RUL alarm metrics
+2026-04-27 15:00:44,171 | INFO |   - Safety_Accuracy: 0.8951612903225806
+2026-04-27 15:00:44,171 | INFO |   - Safety_Precision: 0.6708860759493671
+2026-04-27 15:00:44,171 | INFO |   - Safety_Recall: 1.0
+2026-04-27 15:00:44,171 | INFO |   - Safety_F1: 0.803030303030303
+2026-04-27 15:00:44,171 | INFO |   - Safety_TN: 169
+2026-04-27 15:00:44,171 | INFO |   - Safety_FP: 26
+2026-04-27 15:00:44,171 | INFO |   - Safety_FN: 0
+2026-04-27 15:00:44,171 | INFO |   - Safety_TP: 53
+2026-04-27 15:00:44,171 | INFO |   - Safety_ROC_AUC: 0.9783260764392839
+2026-04-27 15:00:44,171 | INFO |   - Safety_Average_Precision: 0.9250781949056943
+2026-04-27 15:00:44,171 | INFO | Hybrid OR alarm metrics
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_Accuracy: 0.8790322580645161
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_Precision: 0.6385542168674698
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_Recall: 1.0
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_F1: 0.7794117647058824
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_TN: 165
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_FP: 30
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_FN: 0
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_TP: 53
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_ROC_AUC: 0.9774552491533623
+2026-04-27 15:00:44,171 | INFO |   - Hybrid_Average_Precision: 0.9210783979226473
+2026-04-27 15:00:44,171 | INFO | Post-hoc neural alarm metrics
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_Accuracy: 0.9314516129032258
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_Precision: 0.8214285714285714
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_Recall: 0.8679245283018868
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_F1: 0.8440366972477065
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_TN: 185
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_FP: 10
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_FN: 7
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_TP: 46
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_ROC_AUC: 0.976487663280116
+2026-04-27 15:00:44,171 | INFO |   - Posthoc_Neural_Average_Precision: 0.9196781657462444
+2026-04-27 15:00:44,171 | INFO | Post-hoc best-F1 neural threshold
+2026-04-27 15:00:44,171 | INFO |   - threshold: 0.24000000000000002
+2026-04-27 15:00:44,171 | INFO |   - precision: 0.8214285714285714
+2026-04-27 15:00:44,171 | INFO |   - recall: 0.8679245283018868
+2026-04-27 15:00:44,171 | INFO |   - f1: 0.8440366972477065
+2026-04-27 15:00:44,171 | INFO |   - accuracy: 0.9314516129032258
+2026-04-27 15:00:44,171 | INFO | JSON saved: reports/phase_3_evaluation/Final_Metrics.json
+2026-04-27 15:00:44,172 | INFO | 
+2026-04-27 15:00:44,172 | INFO | ====================================================================================================
+2026-04-27 15:00:44,172 | INFO | Generating diagnostic plots
+2026-04-27 15:00:44,172 | INFO | ====================================================================================================
+2026-04-27 15:00:44,172 | INFO | 
+2026-04-27 15:00:44,172 | INFO | ====================================================================================================
+2026-04-27 15:00:44,172 | INFO | Plot 1 - RUL prediction scatter
+2026-04-27 15:00:44,172 | INFO | ====================================================================================================
+2026-04-27 15:00:44,346 | INFO | Plot saved: reports/phase_3_evaluation/01_RUL_Prediction_Scatter.png
+2026-04-27 15:00:44,346 | INFO | 
+2026-04-27 15:00:44,346 | INFO | ====================================================================================================
+2026-04-27 15:00:44,346 | INFO | Plot 2 - Error distribution
+2026-04-27 15:00:44,346 | INFO | ====================================================================================================
+2026-04-27 15:00:44,472 | INFO | Plot saved: reports/phase_3_evaluation/02_Error_Distribution.png
+2026-04-27 15:00:44,472 | INFO | 
+2026-04-27 15:00:44,472 | INFO | ====================================================================================================
+2026-04-27 15:00:44,472 | INFO | Plot 3 - Absolute error by true RUL
+2026-04-27 15:00:44,472 | INFO | ====================================================================================================
+2026-04-27 15:00:44,596 | INFO | Plot saved: reports/phase_3_evaluation/03_Absolute_Error_vs_RUL.png
+2026-04-27 15:00:44,596 | INFO | 
+2026-04-27 15:00:44,596 | INFO | ====================================================================================================
+2026-04-27 15:00:44,596 | INFO | Plot - Validation-Threshold Neural Classifier Confusion Matrix
+2026-04-27 15:00:44,596 | INFO | ====================================================================================================
+2026-04-27 15:00:44,653 | INFO | Plot saved: reports/phase_3_evaluation/04_Validation_Threshold_Neural_Confusion_Matrix.png
+2026-04-27 15:00:44,653 | INFO | 
+2026-04-27 15:00:44,653 | INFO | ====================================================================================================
+2026-04-27 15:00:44,653 | INFO | Plot - Safety-Adjusted RUL Rule Confusion Matrix
+2026-04-27 15:00:44,653 | INFO | ====================================================================================================
+2026-04-27 15:00:44,708 | INFO | Plot saved: reports/phase_3_evaluation/05_Safety_RUL_Confusion_Matrix.png
+2026-04-27 15:00:44,709 | INFO | 
+2026-04-27 15:00:44,709 | INFO | ====================================================================================================
+2026-04-27 15:00:44,709 | INFO | Plot - Hybrid OR Alarm Strategy Confusion Matrix
+2026-04-27 15:00:44,709 | INFO | ====================================================================================================
+2026-04-27 15:00:44,764 | INFO | Plot saved: reports/phase_3_evaluation/06_Hybrid_Confusion_Matrix.png
+2026-04-27 15:00:44,764 | INFO | 
+2026-04-27 15:00:44,764 | INFO | ====================================================================================================
+2026-04-27 15:00:44,764 | INFO | Plot - Neural Failure Classifier ROC Curve
+2026-04-27 15:00:44,764 | INFO | ====================================================================================================
+2026-04-27 15:00:44,845 | INFO | Plot saved: reports/phase_3_evaluation/07_Neural_ROC_Curve.png
+2026-04-27 15:00:44,846 | INFO | 
+2026-04-27 15:00:44,846 | INFO | ====================================================================================================
+2026-04-27 15:00:44,846 | INFO | Plot - Neural Failure Classifier Precision-Recall Curve
+2026-04-27 15:00:44,846 | INFO | ====================================================================================================
+2026-04-27 15:00:44,914 | INFO | Plot saved: reports/phase_3_evaluation/07b_Neural_Precision_Recall_Curve.png
+2026-04-27 15:00:44,914 | INFO | 
+2026-04-27 15:00:44,914 | INFO | ====================================================================================================
+2026-04-27 15:00:44,914 | INFO | Plot 8 - Operational risk distribution
+2026-04-27 15:00:44,914 | INFO | ====================================================================================================
+2026-04-27 15:00:45,014 | INFO | Plot saved: reports/phase_3_evaluation/08_Operational_Risk_Distribution.png
+2026-04-27 15:00:45,014 | INFO | 
+2026-04-27 15:00:45,014 | INFO | ====================================================================================================
+2026-04-27 15:00:45,014 | INFO | Plot 9 - Highest-error engines
+2026-04-27 15:00:45,014 | INFO | ====================================================================================================
+2026-04-27 15:00:45,122 | INFO | Plot saved: reports/phase_3_evaluation/09_Top_Error_Engines.png
+2026-04-27 15:00:45,122 | INFO | 
+2026-04-27 15:00:45,122 | INFO | ====================================================================================================
+2026-04-27 15:00:45,122 | INFO | Plot 10 - Failure probability distribution
+2026-04-27 15:00:45,122 | INFO | ====================================================================================================
+2026-04-27 15:00:45,218 | INFO | Plot saved: reports/phase_3_evaluation/10_Failure_Probability_Distribution.png
+2026-04-27 15:00:45,218 | INFO | 
+2026-04-27 15:00:45,218 | INFO | ====================================================================================================
+2026-04-27 15:00:45,218 | INFO | Plot 11 - Threshold sweep
+2026-04-27 15:00:45,218 | INFO | ====================================================================================================
+2026-04-27 15:00:45,316 | INFO | Plot saved: reports/phase_3_evaluation/11_Neural_Threshold_Sweep_Posthoc.png
+2026-04-27 15:00:45,316 | INFO | 
+2026-04-27 15:00:45,316 | INFO | ====================================================================================================
+2026-04-27 15:00:45,316 | INFO | Plot 12 - Alarm strategy comparison
+2026-04-27 15:00:45,316 | INFO | ====================================================================================================
+2026-04-27 15:00:45,484 | INFO | Plot saved: reports/phase_3_evaluation/12_Alarm_Strategy_Comparison.png
+2026-04-27 15:00:45,485 | INFO | Markdown report saved to: reports/phase_3_evaluation/phase_3_report.md
+2026-04-27 15:00:45,485 | INFO | 
+2026-04-27 15:00:45,485 | INFO | ====================================================================================================
+2026-04-27 15:00:45,485 | INFO | PHASE 3 COMPLETED
+2026-04-27 15:00:45,485 | INFO | ====================================================================================================
+2026-04-27 15:00:45,485 | INFO | Elapsed time: 1.62 seconds
+2026-04-27 15:00:45,485 | INFO | Reports directory: reports/phase_3_evaluation
+2026-04-27 15:00:45,485 | INFO | Log file: reports/phase_3_evaluation/phase_3_diagnostics.log

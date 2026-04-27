@@ -1,0 +1,24 @@
+{
+    "selected_threshold": 0.01,
+    "selected_strategy": "best_precision_with_recall_at_least_90",
+    "selection_source": "validation",
+    "selection_reason": "Validation-selected threshold. Conservative policy prioritizes high recall while avoiding test-set tuning.",
+    "default_threshold": 0.5,
+    "threshold_selection": {
+        "best_f1": {
+            "threshold": 0.44,
+            "precision": 0.7326846021751574,
+            "recall": 0.8258064516129032,
+            "f1": 0.7764634516226873,
+            "accuracy": 0.9336454488160619
+        },
+        "best_precision_with_recall_at_least_90": {
+            "threshold": 0.01,
+            "precision": 0.6468978102189781,
+            "recall": 0.9148387096774193,
+            "f1": 0.757883484767504,
+            "accuracy": 0.9184298190330422
+        },
+        "best_precision_with_recall_at_least_95": null
+    }
+}

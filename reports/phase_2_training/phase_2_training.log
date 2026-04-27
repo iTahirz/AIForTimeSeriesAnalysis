@@ -1,0 +1,274 @@
+2026-04-27 14:40:15,810 | INFO | 
+2026-04-27 14:40:15,810 | INFO | ====================================================================================================
+2026-04-27 14:40:15,810 | INFO | PHASE 2 - FD004 CONSERVATIVE BALANCED TRAINING
+2026-04-27 14:40:15,810 | INFO | ====================================================================================================
+2026-04-27 14:40:15,810 | INFO | Phase 1 metadata loaded from: data/processed/phase_1_metadata.json
+2026-04-27 14:40:15,810 | INFO | 
+2026-04-27 14:40:15,810 | INFO | ====================================================================================================
+2026-04-27 14:40:15,810 | INFO | Loading Phase 1 tensors
+2026-04-27 14:40:15,810 | INFO | ====================================================================================================
+2026-04-27 14:40:15,901 | INFO | 
+2026-04-27 14:40:15,901 | INFO | ====================================================================================================
+2026-04-27 14:40:15,901 | INFO | Dataset diagnostics
+2026-04-27 14:40:15,901 | INFO | ====================================================================================================
+2026-04-27 14:40:15,901 | INFO | Training tensor summary
+2026-04-27 14:40:15,901 | INFO |   - X_train shape: (42921, 30, 45)
+2026-04-27 14:40:15,901 | INFO |   - y_train_rul shape: (42921, 1)
+2026-04-27 14:40:15,901 | INFO |   - y_train_fail shape: (42921, 1)
+2026-04-27 14:40:15,901 | INFO |   - RUL target min: 0.0
+2026-04-27 14:40:15,901 | INFO |   - RUL target max: 1.0
+2026-04-27 14:40:15,901 | INFO |   - Failure positive rate: 0.14372918009757996
+2026-04-27 14:40:15,901 | INFO | Validation tensor summary
+2026-04-27 14:40:15,901 | INFO |   - X_val shape: (11107, 30, 45)
+2026-04-27 14:40:15,901 | INFO |   - y_val_rul shape: (11107, 1)
+2026-04-27 14:40:15,901 | INFO |   - y_val_fail shape: (11107, 1)
+2026-04-27 14:40:15,901 | INFO |   - RUL target min: 0.0
+2026-04-27 14:40:15,901 | INFO |   - RUL target max: 1.0
+2026-04-27 14:40:15,901 | INFO |   - Failure positive rate: 0.13955163955688477
+2026-04-27 14:40:15,902 | INFO | JSON saved: reports/phase_2_training/training_configuration.json
+2026-04-27 14:40:15,902 | INFO | Training configuration
+2026-04-27 14:40:15,902 | INFO |   - epochs: 150
+2026-04-27 14:40:15,902 | INFO |   - batch_size: 128
+2026-04-27 14:40:15,902 | INFO |   - learning_rate: 0.0005
+2026-04-27 14:40:15,902 | INFO |   - clipnorm: 1.0
+2026-04-27 14:40:15,902 | INFO |   - dropout_rate: 0.2
+2026-04-27 14:40:15,902 | INFO |   - rul_output_loss_weight: 4.0
+2026-04-27 14:40:15,902 | INFO |   - fail_output_loss_weight: 0.75
+2026-04-27 14:40:15,902 | INFO |   - eol_weight_alpha: 3.2
+2026-04-27 14:40:15,902 | INFO |   - eol_weight_beta: 3.5
+2026-04-27 14:40:15,902 | INFO |   - overestimation_alpha: 1.6
+2026-04-27 14:40:15,902 | INFO |   - overestimation_beta: 2.5
+2026-04-27 14:40:15,902 | INFO |   - underestimation_weight: 1.0
+2026-04-27 14:40:15,902 | INFO |   - failure_positive_rate: 0.14372918009757996
+2026-04-27 14:40:15,902 | INFO |   - failure_positive_weight: 5.95752942666955
+2026-04-27 14:40:15,902 | INFO |   - validation_safety_margin: 10.0
+2026-04-27 14:40:15,902 | INFO |   - default_fail_probability_threshold: 0.5
+2026-04-27 14:40:15,902 | INFO |   - gpu_disabled: True
+2026-04-27 14:40:15,902 | INFO |   - random_state: 42
+2026-04-27 14:40:15,902 | INFO | 
+2026-04-27 14:40:15,902 | INFO | ====================================================================================================
+2026-04-27 14:40:15,902 | INFO | Model construction
+2026-04-27 14:40:15,902 | INFO | ====================================================================================================
+2026-04-27 14:40:15,966 | INFO | Model: "fd004_conservative_balanced"
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer       ┃ Output     ┃ Param ┃ Connected  ┃
+┃ (type)      ┃ Shape      ┃     # ┃ to         ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━┩
+│ sequence_i… │ (None, 30, │     0 │ -          │
+│ (InputLaye… │ 45)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ input_norm… │ (None, 30, │   180 │ sequence_… │
+│ (BatchNorm… │ 45)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ conv_1      │ (None, 30, │ 8,704 │ input_nor… │
+│ (Conv1D)    │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ conv_1_norm │ (None, 30, │   256 │ conv_1[0]… │
+│ (BatchNorm… │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ conv_2      │ (None, 30, │ 12,3… │ conv_1_no… │
+│ (Conv1D)    │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ conv_2_norm │ (None, 30, │   256 │ conv_2[0]… │
+│ (BatchNorm… │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ conv_dropo… │ (None, 30, │     0 │ conv_2_no… │
+│ (Dropout)   │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ lstm_1      │ (None, 30, │ 33,0… │ conv_drop… │
+│ (LSTM)      │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ lstm_1_nor… │ (None, 30, │   256 │ lstm_1[0]… │
+│ (BatchNorm… │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ lstm_1_dro… │ (None, 30, │     0 │ lstm_1_no… │
+│ (Dropout)   │ 64)        │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ lstm_2      │ (None, 32) │ 12,4… │ lstm_1_dr… │
+│ (LSTM)      │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ core_norma… │ (None, 32) │   128 │ lstm_2[0]… │
+│ (BatchNorm… │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ core_dropo… │ (None, 32) │     0 │ core_norm… │
+│ (Dropout)   │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ rul_dense_1 │ (None, 64) │ 2,112 │ core_drop… │
+│ (Dense)     │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ fail_dense… │ (None, 32) │ 1,056 │ core_drop… │
+│ (Dense)     │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ rul_dropout │ (None, 64) │     0 │ rul_dense… │
+│ (Dropout)   │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ fail_dropo… │ (None, 32) │     0 │ fail_dens… │
+│ (Dropout)   │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ rul_output  │ (None, 1)  │    65 │ rul_dropo… │
+│ (Dense)     │            │       │            │
+├─────────────┼────────────┼───────┼────────────┤
+│ fail_output │ (None, 1)  │    33 │ fail_drop… │
+│ (Dense)     │            │       │            │
+└─────────────┴────────────┴───────┴────────────┘
+ Total params: 70,838 (276.71 KB)
+ Trainable params: 70,300 (274.61 KB)
+ Non-trainable params: 538 (2.10 KB)
+
+2026-04-27 14:40:15,966 | INFO | 
+2026-04-27 14:40:15,966 | INFO | ====================================================================================================
+2026-04-27 14:40:15,966 | INFO | Training started
+2026-04-27 14:40:15,966 | INFO | ====================================================================================================
+2026-04-27 14:51:58,504 | INFO | 
+2026-04-27 14:51:58,505 | INFO | ====================================================================================================
+2026-04-27 14:51:58,505 | INFO | Generating training curves
+2026-04-27 14:51:58,505 | INFO | ====================================================================================================
+2026-04-27 14:51:58,619 | INFO | Plot saved: reports/phase_2_training/01_loss_curve.png
+2026-04-27 14:51:58,711 | INFO | Plot saved: reports/phase_2_training/02_rul_conservative_loss.png
+2026-04-27 14:51:58,803 | INFO | Plot saved: reports/phase_2_training/03_rul_mae.png
+2026-04-27 14:51:58,896 | INFO | Plot saved: reports/phase_2_training/04_rul_rmse.png
+2026-04-27 14:51:58,996 | INFO | Plot saved: reports/phase_2_training/05_fail_accuracy.png
+2026-04-27 14:51:59,089 | INFO | Plot saved: reports/phase_2_training/06_fail_precision.png
+2026-04-27 14:51:59,189 | INFO | Plot saved: reports/phase_2_training/07_fail_recall.png
+2026-04-27 14:51:59,282 | INFO | Plot saved: reports/phase_2_training/08_fail_auc.png
+2026-04-27 14:51:59,370 | INFO | Plot saved: reports/phase_2_training/09_learning_rate.png
+2026-04-27 14:51:59,370 | INFO | 
+2026-04-27 14:51:59,370 | INFO | ====================================================================================================
+2026-04-27 14:51:59,370 | INFO | Validation evaluation
+2026-04-27 14:51:59,370 | INFO | ====================================================================================================
+2026-04-27 14:52:00,548 | INFO | Weighted validation metrics
+2026-04-27 14:52:00,548 | INFO |   - fail_output_auc: 0.939471
+2026-04-27 14:52:00,548 | INFO |   - fail_output_binary_accuracy: 0.933375
+2026-04-27 14:52:00,548 | INFO |   - fail_output_loss: 0.981254
+2026-04-27 14:52:00,548 | INFO |   - fail_output_precision: 0.733834
+2026-04-27 14:52:00,548 | INFO |   - fail_output_recall: 0.820000
+2026-04-27 14:52:00,548 | INFO |   - loss: 0.976168
+2026-04-27 14:52:00,548 | INFO |   - rul_output_loss: 0.059030
+2026-04-27 14:52:00,548 | INFO |   - rul_output_mae: 0.137511
+2026-04-27 14:52:00,548 | INFO |   - rul_output_rmse: 0.194090
+2026-04-27 14:52:02,105 | INFO | JSON saved: reports/phase_2_training/selected_failure_threshold.json
+2026-04-27 14:52:02,109 | INFO | Threshold sweep saved: reports/phase_2_training/validation_failure_threshold_sweep.csv
+2026-04-27 14:52:02,204 | INFO | Plot saved: reports/phase_2_training/17_validation_threshold_sweep.png
+2026-04-27 14:52:02,225 | INFO | 
+2026-04-27 14:52:02,225 | INFO | ====================================================================================================
+2026-04-27 14:52:02,225 | INFO | Validation prognostic diagnostics
+2026-04-27 14:52:02,225 | INFO | ====================================================================================================
+2026-04-27 14:52:02,225 | INFO | Validation diagnostics
+2026-04-27 14:52:02,225 | INFO |   - validation_global_mae_cycles: 17.175621032714844
+2026-04-27 14:52:02,225 | INFO |   - validation_global_rmse_cycles: 24.25843620300293
+2026-04-27 14:52:02,225 | INFO |   - validation_global_bias_cycles: -6.2792158126831055
+2026-04-27 14:52:02,225 | INFO |   - validation_global_median_abs_error_cycles: 10.654167175292969
+2026-04-27 14:52:02,225 | INFO |   - validation_global_overestimation_pct: 30.31421626001621
+2026-04-27 14:52:02,225 | INFO |   - validation_global_underestimation_pct: 69.05555055370488
+2026-04-27 14:52:02,225 | INFO |   - validation_global_within_5_cycles_pct: 19.069055550553703
+2026-04-27 14:52:02,225 | INFO |   - validation_global_within_10_cycles_pct: 46.466192491221754
+2026-04-27 14:52:02,225 | INFO |   - validation_global_within_15_cycles_pct: 62.25803547312506
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_mae_cycles: 22.481220245361328
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_rmse_cycles: 28.4702091217041
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_bias_cycles: -16.165607452392578
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_median_abs_error_cycles: 18.84461212158203
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_overestimation_pct: 17.025299360763483
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_underestimation_pct: 82.57855406500406
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_within_5_cycles_pct: 10.45286756099757
+2026-04-27 14:52:02,225 | INFO |   - validation_safety_adjusted_within_10_cycles_pct: 21.004771765553254
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_adjusted_within_15_cycles_pct: 33.27631223552714
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_mae_cycles: 8.162979125976562
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_rmse_cycles: 12.386713981628418
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_bias_cycles: 5.603951454162598
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_median_abs_error_cycles: 5.164966106414795
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_overestimation_pct: 71.16129032258065
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_underestimation_pct: 28.838709677419356
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_within_5_cycles_pct: 48.83870967741936
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_within_10_cycles_pct: 74.0
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_within_15_cycles_pct: 83.54838709677419
+2026-04-27 14:52:02,226 | INFO |   - validation_eol_samples: 1550
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_mae_cycles: 22.410799026489258
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_rmse_cycles: 28.20848846435547
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_bias_cycles: 8.397931098937988
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_median_abs_error_cycles: 18.2120361328125
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_overestimation_pct: 56.48
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_underestimation_pct: 43.519999999999996
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_within_5_cycles_pct: 16.24
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_within_10_cycles_pct: 29.520000000000003
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_within_15_cycles_pct: 41.8
+2026-04-27 14:52:02,226 | INFO |   - validation_mid_rul_samples: 2500
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_mae_cycles: 17.300552368164062
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_rmse_cycles: 24.710426330566406
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_bias_cycles: -14.08873462677002
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_median_abs_error_cycles: 10.513069152832031
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_overestimation_pct: 12.073118889046338
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_underestimation_pct: 86.93495819753436
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_within_5_cycles_pct: 13.532662604506166
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_within_10_cycles_pct: 46.42199234802324
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_within_15_cycles_pct: 64.82924755561854
+2026-04-27 14:52:02,226 | INFO |   - validation_high_rul_samples: 7057
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_accuracy: 0.9184298190330422
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_precision: 0.6468978102189781
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_recall: 0.9148387096774193
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_f1: 0.757883484767504
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_tn: 8783
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_fp: 774
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_fn: 132
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_tp: 1418
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_confusion_matrix: [[8783, 774], [132, 1418]]
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_roc_auc: 0.9722110123638475
+2026-04-27 14:52:02,226 | INFO |   - validation_neural_alarm_average_precision: 0.8388180408788365
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_accuracy: 0.9141982533537408
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_precision: 0.6328437917222964
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_recall: 0.9174193548387096
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_f1: 0.7490123781933105
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_tn: 8732
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_fp: 825
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_fn: 128
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_tp: 1422
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_confusion_matrix: [[8732, 825], [128, 1422]]
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_roc_auc: 0.9722419304208705
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_alarm_average_precision: 0.8424875489802519
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_accuracy: 0.9096065544251373
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_precision: 0.6175710594315246
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_recall: 0.9251612903225807
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_f1: 0.7407024793388429
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_tn: 8669
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_fp: 888
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_fn: 116
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_tp: 1434
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_confusion_matrix: [[8669, 888], [116, 1434]]
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_roc_auc: 0.9718790145375623
+2026-04-27 14:52:02,226 | INFO |   - validation_hybrid_alarm_average_precision: 0.8408637191315173
+2026-04-27 14:52:02,226 | INFO |   - selected_failure_probability_threshold: 0.01
+2026-04-27 14:52:02,226 | INFO |   - validation_safety_margin_cycles: 10.0
+2026-04-27 14:52:02,226 | INFO | 
+2026-04-27 14:52:02,226 | INFO | ====================================================================================================
+2026-04-27 14:52:02,226 | INFO | Generating validation diagnostics
+2026-04-27 14:52:02,226 | INFO | ====================================================================================================
+2026-04-27 14:52:02,674 | INFO | Plot saved: reports/phase_2_training/10_validation_rul_scatter.png
+2026-04-27 14:52:02,798 | INFO | Plot saved: reports/phase_2_training/11_validation_error_distribution.png
+2026-04-27 14:52:02,907 | INFO | Plot saved: reports/phase_2_training/12_validation_eol_error_distribution.png
+2026-04-27 14:52:03,085 | INFO | Plot saved: reports/phase_2_training/13_validation_abs_error_vs_rul.png
+2026-04-27 14:52:03,185 | INFO | Plot saved: reports/phase_2_training/14_validation_failure_probability_distribution.png
+2026-04-27 14:52:03,271 | INFO | Plot saved: reports/phase_2_training/15_validation_failure_roc_curve.png
+2026-04-27 14:52:03,354 | INFO | Plot saved: reports/phase_2_training/16_validation_failure_precision_recall_curve.png
+2026-04-27 14:52:03,354 | INFO | JSON saved: reports/phase_2_training/validation_results.json
+2026-04-27 14:52:03,357 | INFO | 
+2026-04-27 14:52:03,357 | INFO | ====================================================================================================
+2026-04-27 14:52:03,357 | INFO | Saving model artifacts
+2026-04-27 14:52:03,357 | INFO | ====================================================================================================
+2026-04-27 14:52:03,405 | INFO | JSON saved: reports/phase_2_training/final_history.json
+2026-04-27 14:52:03,405 | INFO | Markdown report saved: reports/phase_2_training/phase_2_training_report.md
+2026-04-27 14:52:03,406 | INFO | 
+2026-04-27 14:52:03,406 | INFO | ====================================================================================================
+2026-04-27 14:52:03,406 | INFO | Saved artifacts
+2026-04-27 14:52:03,406 | INFO | ====================================================================================================
+2026-04-27 14:52:03,406 | INFO | Best checkpoint model: models/fd004_specialist.keras
+2026-04-27 14:52:03,406 | INFO | Final model: models/fd004_specialist_final.keras
+2026-04-27 14:52:03,406 | INFO | Weights: models/fd004_specialist_weights.weights.h5
+2026-04-27 14:52:03,406 | INFO | Training history: reports/phase_2_training/final_history.json
+2026-04-27 14:52:03,406 | INFO | Validation diagnostics: reports/phase_2_training/validation_results.json
+2026-04-27 14:52:03,406 | INFO | Selected threshold: reports/phase_2_training/selected_failure_threshold.json
+2026-04-27 14:52:03,406 | INFO | 
+2026-04-27 14:52:03,406 | INFO | ====================================================================================================
+2026-04-27 14:52:03,406 | INFO | PHASE 2 COMPLETED
+2026-04-27 14:52:03,406 | INFO | ====================================================================================================
+2026-04-27 14:52:03,406 | INFO | Elapsed time: 707.60 seconds
+2026-04-27 14:52:03,406 | INFO | Reports directory: reports/phase_2_training
+2026-04-27 14:52:03,406 | INFO | Models directory: models
